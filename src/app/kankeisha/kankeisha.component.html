@@ -1,0 +1,18 @@
+<h3 class="centered">医療関係の方へ</h3>
+
+<p>貴院の伝いたい情報を、私たちが無料にて代わって発信します。</p>
+<p>まずは、お気軽にご相談ください。</p>
+<form #form="ngForm" (ngSubmit)="submit()">
+    <div class="form-group">
+        <label for="email">メールアドレス</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+            placeholder="example@byouin.com" [(ngModel)]="email" name="email">
+        <small id="emailHelp" class="form-text text-muted">いただいたご連絡先は、希望なさる場合を除き第三者と共有することはありません。</small>
+    </div>
+    <div class="form-group">
+        <label for="naiyo">伝えたい内容</label>
+        <textarea class="form-control" placeholder="Of course, we'd make a more specific form for a more polished product"
+        [(ngModel)]="message" id="naiyo" name="naiyo"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
