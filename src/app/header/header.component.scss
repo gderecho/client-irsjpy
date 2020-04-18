@@ -1,0 +1,18 @@
+
+@media(min-width:42em) {
+    .title-header {
+        float: left;
+    }
+    .nav-header {
+        float: right;
+    }
+}
+
+:host {
+    margin-bottom: auto!important;
+    margin-bottom: 2rem;
+}
+
+.nav a.nav-link.active {
+    color: blue;
+}
