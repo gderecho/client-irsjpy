@@ -1,13 +1,4 @@
 
-.overall-container {
-    max-width: 45em;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1rem !important;
-}
 
 
 .heading {
@@ -29,12 +20,6 @@
 }
 
 
-footer {
-    margin-top: auto!important;
-    margin-top: 2rem;
-    padding: 1rem 1rem 0rem 0rem;
-    border-top: 1px dotted gray;
-}
 
 .nav-link {
     font-weight: 600;
@@ -47,12 +32,4 @@ footer {
 
 .nav .active {
     color: blue;
-}
-
-p.copyright {
-    color: rgb(180, 180, 180);
-}
-
-footer.a {
-    color: lightblue;
 }
