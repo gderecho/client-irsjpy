@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoverComponent } from './cover/cover.component';
 import { KankeishaComponent } from './kankeisha/kankeisha.component';
 import { LearnComponent } from './learn/learn.component';
+import { InquirythanksComponent } from './inquirythanks/inquirythanks.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: 'learn',
     component: LearnComponent
   },
+  {
+    path: 'thanks',
+    component: InquirythanksComponent
+  }
 ];
 
 @NgModule({

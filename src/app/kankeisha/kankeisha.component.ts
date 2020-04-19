@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ForminfoService } from '../services/forminfo.service';
 
 @Component({
   selector: 'app-kankeisha',
@@ -28,14 +30,18 @@ export class KankeishaComponent implements OnInit {
     return 0;
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private route: Router,
+    private forminfo: ForminfoService
+  ) { }
 
   ngOnInit(): void {
   }
 
   submit(): void {
     console.log(this.data);
-    let url : string = 'http://localhost:3000';
+    let url : string = 'http://localhost:3001';
     this.http.post<object>(
       url,
       this.data,
@@ -44,7 +50,16 @@ export class KankeishaComponent implements OnInit {
           'Content-Type': 'application/json'
         })
       }
-    ).subscribe(a => console.log(a));
+    ).subscribe(
+      (a : object) => {
+        console.info(a);
+        this.forminfo.email.next(a['msg']['email']);
+        this.route.navigate(['/thanks']);
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
   }
 
 }

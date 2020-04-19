@@ -10,6 +10,7 @@ import { CoverComponent } from './cover/cover.component';
 import { FooterComponent } from './footer/footer.component';
 import { KankeishaComponent } from './kankeisha/kankeisha.component';
 import { LearnComponent } from './learn/learn.component';
+import { InquirythanksComponent } from './inquirythanks/inquirythanks.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LearnComponent } from './learn/learn.component';
     CoverComponent,
     FooterComponent,
     KankeishaComponent,
-    LearnComponent
+    LearnComponent,
+    InquirythanksComponent
   ],
   imports: [
     BrowserModule,
