@@ -40,26 +40,7 @@ export class KankeishaComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.data);
-    let url : string = 'http://localhost:3001';
-    this.http.post<object>(
-      url,
-      this.data,
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      }
-    ).subscribe(
-      (a : object) => {
-        console.info(a);
-        this.forminfo.email.next(a['msg']['email']);
-        this.route.navigate(['/thanks']);
-      },
-      (error: HttpErrorResponse) => {
-        console.error(error);
-      }
-    );
+    this.forminfo.submit(this.data);
   }
 
 }
