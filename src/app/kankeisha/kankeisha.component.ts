@@ -8,8 +8,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class KankeishaComponent implements OnInit {
 
-  email="";
-  message="";
+  data = {
+    email: "",
+    name: "",
+    message: "",
+    soufuhouhou: "",
+    tarinaimono: "",
+    fusoku: null,
+    ippannsoufu: null,
+  };
+
+  readonly yesOrNo=new Map<boolean, string>([
+    [null, "未選択"],
+    [true, "はい"],
+    [false, "いいえ"]
+  ]);
+
+  cmp(a,b): number {
+    return 0;
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -17,17 +34,11 @@ export class KankeishaComponent implements OnInit {
   }
 
   submit(): void {
-    console.log({
-      email: this.email,
-      message: this.message
-    });
+    console.log(this.data);
     let url : string = 'http://localhost:3000';
     this.http.post<object>(
       url,
-      {
-        email: this.email,
-        message: this.message
-      },
+      this.data,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
