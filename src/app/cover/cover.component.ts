@@ -7,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoverComponent implements OnInit {
 
-  data = {
-    a: "a",
-    b: "b",
-    c: "c"
-  };
+  learn : boolean = false;
 
   constructor() { }
 

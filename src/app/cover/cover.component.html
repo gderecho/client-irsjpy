@@ -4,9 +4,15 @@
         戦後最大の危機。医療崩壊が懸念されている今。でも私たちにできることは多くあります。
     </p>
     <p class="text">
-        私達にできる支援の一環として、不足している物資を医療機関に届けることで、医療従事者を支え、少しでも医療機関に貢献できるのではないでしょうか。ご自宅に眠っているマスクや雨がっぱ等“闘う武器”を一緒に寄付していきませんか。
+        私達にできる支援の一環として、不足している物資を医療機関に届けることで、
+        医療従事者を支え、
+        少しでも医療機関に貢献できるのではないでしょうか。
+        ご自宅に眠っているマスクや雨がっぱ等「闘う武器」を一緒に寄付していきませんか。
     </p>
-    <p class="centered">
-        <a href="learn" class="btn btn-lg btn-outline-primary">Learn more</a>
+    <p *ngIf="!learn; else expanded" class="centered">
+        <button class="btn btn-lg btn-outline-primary" (click)="learn=true">Learn more</button>
     </p>
+    <ng-template #expanded>
+        <app-learn></app-learn>
+    </ng-template>
 </main>
