@@ -5,6 +5,7 @@ import { CoverComponent } from './cover/cover.component';
 import { KankeishaComponent } from './kankeisha/kankeisha.component';
 import { LearnComponent } from './learn/learn.component';
 import { InquirythanksComponent } from './inquirythanks/inquirythanks.component';
+import { VoicesComponent } from './voices/voices.component';
 
 const routes: Routes = [
   {
@@ -16,8 +17,8 @@ const routes: Routes = [
     component: KankeishaComponent
   },
   {
-    path: 'learn',
-    component: LearnComponent
+    path: 'koe',
+    component: VoicesComponent
   },
   {
     path: 'thanks',

@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { KankeishaComponent } from './kankeisha/kankeisha.component';
 import { LearnComponent } from './learn/learn.component';
 import { InquirythanksComponent } from './inquirythanks/inquirythanks.component';
+import { VoicesComponent } from './voices/voices.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InquirythanksComponent } from './inquirythanks/inquirythanks.component'
     FooterComponent,
     KankeishaComponent,
     LearnComponent,
-    InquirythanksComponent
+    InquirythanksComponent,
+    VoicesComponent
   ],
   imports: [
     BrowserModule,
