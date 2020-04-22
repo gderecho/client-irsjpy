@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json /app/
 RUN npm install
 COPY ./ /app/
-ARG env=prod
+ARG env=production
 RUN npm run build -- --output-path=./dist/out --configuration $env
 
 # Stage 1: nginx
