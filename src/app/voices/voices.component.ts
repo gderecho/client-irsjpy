@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoicesComponent implements OnInit {
 
+  location: object = null;
+  geolocation: boolean = false;
 
   readonly voices = [
     {
@@ -33,10 +35,31 @@ export class VoicesComponent implements OnInit {
     }
   ]
 
+  setLoc = (pos) =>  {
+      this.location = {
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude,
+      };
+      console.log(this.location);
+  }
+
+  getLocation() {
+    if(!this.geolocation) {
+      console.error("getLocation called even though api not available");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(this.setLoc);
+  }
 
   constructor() { }
 
   ngOnInit(): void {
+    if(navigator.geolocation) {
+      console.info("geolocation api found");
+      this.geolocation = true;
+    }
   }
+
+
 
 }

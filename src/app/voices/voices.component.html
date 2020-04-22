@@ -1,7 +1,12 @@
 <main role="main">
     <h3 class="top">IRの声</h3>
     <p class="alert alert-primary">
-       <a href="#">現在地の近くにある医療機関</a>からのメッセージを表示しましょう。
+        <ng-container *ngIf="geolocation && !location">
+            <a role="button" (click)="getLocation()">現在地の近くにある医療機関</a>からのメッセージを表示しましょう。
+        </ng-container>
+        <ng-container *ngIf="location">
+            {{location['latitude']}} {{location['longitude']}}
+        </ng-container>
     </p>
     <div *ngFor="let voice of voices" class="container container-voice">
         <h4>{{voice.name}}</h4>
