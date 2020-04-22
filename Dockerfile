@@ -9,6 +9,6 @@ ARG env=production
 RUN npm run build -- --output-path=./dist/out --configuration $env
 
 # Stage 1: nginx
-FROM nginx:1.18
+FROM nginx:stable
 COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
