@@ -9,6 +9,7 @@ export class VoicesComponent implements OnInit {
 
   location: object = null;
   geolocation: boolean = false;
+  loadinglocation: boolean = false;
 
   readonly voices = [
     {
@@ -41,6 +42,7 @@ export class VoicesComponent implements OnInit {
         longitude: pos.coords.longitude,
       };
       console.log(this.location);
+      this.loadinglocation = false;
   }
 
   getLocation() {
@@ -48,6 +50,7 @@ export class VoicesComponent implements OnInit {
       console.error("getLocation called even though api not available");
       return;
     }
+    this.loadinglocation = true;
     navigator.geolocation.getCurrentPosition(this.setLoc);
   }
 

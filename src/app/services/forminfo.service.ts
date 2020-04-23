@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class ForminfoService {
 
   email: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  readonly url: string = 'http://localhost:3001';
+  readonly url: string = environment.backurl;
 
   constructor(
     private http: HttpClient,
