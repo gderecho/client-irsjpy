@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -10,15 +11,15 @@ import { environment } from '../../environments/environment';
 export class ForminfoService {
 
   email: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  readonly url: string = environment.backurl;
+  readonly url: string = this.loc.prepareExternalUrl(environment.backurl);
 
   constructor(
     private http: HttpClient,
-    private route: Router
+    private route: Router,
+    private loc: Location,
   ) { }
 
   submit(data: object) {
-    console.info("Sending data: ", data);
     this.http.post<object>(
       this.url,
       data,
