@@ -16,7 +16,14 @@
         <h4>{{voice.address}}</h4>
         <div *ngFor="let item of voice.message">
             <p class="attr"> {{item[0]}} </p>
-            <p class="value"> {{item[1]}} </p>
+            <p class="value" *ngIf="isstring(item[1]); else list"> {{item[1]}} </p>
+            <ng-template #list>
+                <div class="badge-holder">
+                    <span *ngFor="let i of item[1]" class="badge badge-primary">
+                        {{i}}
+                    </span>
+                </div>
+            </ng-template>
         </div>
     </div>
 
