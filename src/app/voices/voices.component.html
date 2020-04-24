@@ -11,10 +11,10 @@
             Loading...
         </ng-container>
     </p>
-    <div *ngFor="let voice of voices" class="container container-voice">
+    <div *ngFor="let voice of voices.voices | async" class="container container-voice">
         <h4>{{voice.name}}</h4>
         <h4>{{voice.address}}</h4>
-        <div *ngFor="let item of voice.message">
+        <div *ngFor="let item of voice.content">
             <p class="attr"> {{item[0]}} </p>
             <p class="value" *ngIf="isstring(item[1]); else list"> {{item[1]}} </p>
             <ng-template #list>
@@ -24,6 +24,14 @@
                     </span>
                 </div>
             </ng-template>
+        </div>
+        <div>
+          <p class="attr"> 投稿者 </p>
+          <p class="value"> {{voice.poster}} </p>
+        </div>
+        <div>
+          <p class="attr"> 更新日 </p>
+          <p class="value"> {{voice.date}} </p>
         </div>
     </div>
 
