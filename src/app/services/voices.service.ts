@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Location } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
+import { LocationService } from './location.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,31 @@ export class VoicesService {
 
   constructor(
     private http: HttpClient,
-    private loc: Location
+    private loc: Location,
+    private geo: LocationService
   ) { 
     this.http.get(this.backurl).subscribe(
-      (res) => {
+      (res: any) => {
         this.voices.next(res);
       },
       (err) => {
         console.error(err);
+      }
+    );
+    this.geo.place.subscribe(
+      place => {
+        console.log("Place updated, sorting voices");
+        if('coords' in place && place['coords']) {
+          this.voices.next(
+            this.voices.value.sort((a,b) => {
+              return (
+                LocationService.distance(a['coords'],place['coords']) 
+                - 
+                LocationService.distance(b['coords'], place['coords'])
+              );
+            })
+          );
+        }
       }
     );
   }
@@ -28,8 +46,8 @@ export class VoicesService {
   readonly backurl = environment.backurl.indexOf("http") === -1 ? 
     this.loc.prepareExternalUrl(environment.backurl) :
     environment.backurl;
-  public voices : BehaviorSubject<object> = new BehaviorSubject<object>([]);
 
+  public voices : BehaviorSubject<Array<object>> = new BehaviorSubject<Array<object>>([]);
 
   get() {
     return this.voices.value;

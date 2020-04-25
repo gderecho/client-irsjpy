@@ -17,7 +17,8 @@ export class LocationService {
   place: BehaviorSubject<any> = new BehaviorSubject<any>({
     loading: false,
     error: null,
-    name: null
+    name: null,
+    coords: null
   });
 
   constructor(
@@ -45,7 +46,8 @@ export class LocationService {
         this.place.next({
           loading: false,
           name: res.result,
-          error: null
+          error: null,
+          coords: lonlat
         });
         console.log(this.place.value);
       },
@@ -53,7 +55,8 @@ export class LocationService {
         this.place.next({
           loading: false,
           name: null,
-          error: err
+          error: err,
+          coords: null
         });
         throw err;
       }
@@ -72,10 +75,32 @@ export class LocationService {
     this.place.next({
       loading: true,
       name: null,
-      error: null
+      error: null,
+      coords: null
     })
     navigator.geolocation.getCurrentPosition(this.setLoc);
   }
 
+  static radians(degrees) {
+    return degrees*Math.PI/180.0;
+  }
+
+  static haversine(theta) {
+    return (1-Math.cos(theta))/2.0;
+  }
+
+  static distance(a: any, b: any): number {
+    console.info("distance between", a, b);
+    let rad = LocationService.radians;
+    let hav = LocationService.haversine;
+    let cos = Math.cos;
+
+    var lat1 = rad(a.latitude);
+    var lat2 = rad(b.latitude);
+    let dlat = rad(a.latitude - b.latitude);
+    let dlon  = rad(a.longitude - b.longitude);
+
+    return hav(dlat) + (cos(lat1)*cos(lat2)*hav(dlon));
+  }
 
 }
