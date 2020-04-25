@@ -27,8 +27,10 @@ p.attr {
     margin-bottom: 0;
 }
 
-p.alert-primary {
+.alert-primary {
     background-color: #effeff;
+    min-height: 55px;
+    display: flex;
 }
 
 span.badge {
@@ -37,12 +39,20 @@ span.badge {
 }
 
 span.badge.badge-primary {
-    //background-color: #8ddb8d;
     background-color: #fff;
     border: 1px solid gray;
     color: black;
     font-weight: 600;
     padding: .5rem .5rem;
+}
+
+p.locinfo {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+span.strong {
+    font-weight: 600;
 }
 
 // span.badge + span.badge {

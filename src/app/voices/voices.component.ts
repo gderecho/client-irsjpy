@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VoicesService } from '../services/voices.service';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'app-voices',
@@ -50,22 +51,12 @@ export class VoicesComponent implements OnInit {
       this.loadinglocation = false;
   }
 
-  getLocation() {
-    if(!this.geolocation) {
-      console.error("getLocation called even though api not available");
-      return;
-    }
-    this.loadinglocation = true;
-    navigator.geolocation.getCurrentPosition(this.setLoc);
-  }
-
-  constructor(public voices: VoicesService) { }
+  constructor(
+    public voices: VoicesService,
+    public geo: LocationService
+  ) { }
 
   ngOnInit(): void {
-    if(navigator.geolocation) {
-      console.info("geolocation api found");
-      this.geolocation = true;
-    }
   }
 
   isstring(s: any): boolean {

@@ -1,5 +1,6 @@
 export const environment = {
     production: true,
-    backurl: '/backend'
+    backurl: '/backend',
+    locurl: '/loc'
 };
 

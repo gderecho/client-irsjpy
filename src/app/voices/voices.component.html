@@ -1,16 +1,27 @@
 <main role="main">
     <h3 class="top">IRの声</h3>
-    <p class="alert alert-primary">
-        <ng-container *ngIf="geolocation && !location && !loadinglocation">
-            <a role="button" [routerLink]="" (click)="getLocation()">現在地の近くにある医療機関</a>からのメッセージを表示しましょう。
+    <div class="alert alert-primary">
+        <ng-container *ngIf="geo.apiAvailable">
+            <ng-container *ngIf="geo.place | async as place">
+                <ng-template [ngIf]="place.loading">
+                    <div class="la-ball-clip-rotate la-dark"> 
+                        <div></div> 
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="!place.loading && place.name">
+                    <p class="locinfo">
+                        <span class="strong">{{place.name}}</span>
+                        の近くの医療機関からのメッセージを表示しています。
+                    </p>
+                </ng-template>
+                <ng-template [ngIf]="!place.loading && !place.name">
+                    <p class="locinfo">
+                        <a role="button" [routerLink]="" (click)="geo.find()">現在地の近くにある医療機関</a>からのメッセージを表示しましょう。
+                    </p>
+                </ng-template>
+            </ng-container>
         </ng-container>
-        <ng-container *ngIf="location && !loadinglocation">
-            {{location['latitude']}} {{location['longitude']}}
-        </ng-container>
-        <ng-container *ngIf="loadinglocation">
-            Loading...
-        </ng-container>
-    </p>
+    </div>
     <div *ngFor="let voice of voices.voices | async" class="container container-voice">
         <h4>{{voice.name}}</h4>
         <h4>{{voice.address}}</h4>
