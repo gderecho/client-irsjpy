@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  readonly google = '../assets/powered_by_google_on_white.png';
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,24 @@
+p {
+    font-size: 1.1rem;
+}
+
+h4 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+:host {
+    margin-top: 1rem;
+}
+
+.button-spacer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    font-size: 1.1rem;
+    padding: .4rem .8rem;
+}

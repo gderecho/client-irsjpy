@@ -4,8 +4,11 @@
 
 export const environment = {
   production: false,
-  backurl: 'http://localhost:3001',
-  locurl: 'http://localhost:4897'
+  backurl: <backurl>,
+  locurl: <locurl>,
+  portalurl: <portalurl>,
+  appidClientID: <appidClientID>,
+  appidDiscoveryEndpoint: <appidDiscoveryEndpoint>
 };
 
 /*

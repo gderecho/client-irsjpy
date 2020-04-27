@@ -23,7 +23,8 @@ const routes: Routes = [
   {
     path: 'thanks',
     component: InquirythanksComponent
-  }
+  },
+  { path: 'portal', loadChildren: () => import('./portal/portal.module').then(m => m.PortalModule) }
 ];
 
 @NgModule({

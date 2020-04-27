@@ -11,7 +11,8 @@ import { environment } from '../../environments/environment';
 export class ForminfoService {
 
   email: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  readonly url: string = this.loc.prepareExternalUrl(environment.backurl);
+  readonly url: string = environment.backurl.indexOf('http') === -1 ?
+   this.loc.prepareExternalUrl(environment.backurl) : environment.backurl;
 
   constructor(
     private http: HttpClient,

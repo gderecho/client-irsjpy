@@ -1,0 +1,20 @@
+<h4>記録をつける</h4>
+
+<form>
+    <div class="form-group">
+        <label for="type">Type of record</label>
+        <select class="form-control" id="type">
+            <option *ngFor="let type of types">
+                {{type}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="date">日付</label>
+        <input type="text" class="form-control" id="date"/>
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+</form>

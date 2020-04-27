@@ -1,5 +1,7 @@
 # credit to https://blog.mayadata.io/openebs/steps-to-deploy-angular-application-on-kubernetes
 # Stage 0: build with node.js
+ARG APPID_CLIENT_ID
+ARG APPID_DISCOVERY_ENDPOINT
 FROM node:13.10.1 as build-stage
 WORKDIR /app
 COPY package*.json /app/

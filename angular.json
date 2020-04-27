@@ -32,7 +32,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/load-awesome/css/ball-clip-rotate.min.css"
             ],
-            "scripts": []
+            "scripts": [
+                "node_modules/localforage/dist/localforage.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -59,7 +61,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumError": "25kb"
                 }
               ]
             }
