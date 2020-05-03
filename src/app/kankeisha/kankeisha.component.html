@@ -6,16 +6,19 @@
     <div class="form-group">
         <label for="email">メールアドレス</label>
         <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-            placeholder="例）example@byouin.com" [(ngModel)]="data.email" name="email" required>
-        <small id="emailHelp" class="form-text text-muted">いただいたご連絡先は、希望される場合を除き第三者と共有することはありません。</small>
+            placeholder="例）example@byouin.com" [(ngModel)]="data.email" name="email" required />
+        <small id="emailHelp" class="form-text text-muted">
+            いただいたご連絡先は、希望される場合を除き第三者と共有することはありません。
+            詳細については<a routerLink="/privacy">プライバシー・ポリシー</a>をご覧ください。
+        </small>
     </div>
     <div class="form-group">
-        <label for="name">医療機関名</label>
+        <label for="name">医療機関名、または個人名</label>
         <input type="name" class="form-control" id="name" aria-describedby="emailHelp"
             placeholder="例）東京都立皇居病院" [(ngModel)]="data.name" name="name" required>
     </div>
     <div class="form-group">
-        <label for="fusoku">貴院では、マスクや防護服などの医療物資は不足していますか。</label>
+        <label for="fusoku">貴院では、マスクや防護服などの医療物資は不足していますか。<span class="optional">任意</span></label>
         <select class="form-control" id="fusoku" name="fusoku" [(ngModel)]="data.fusoku">
             <option *ngFor="let option of yesOrNo | keyvalue : cmp" [ngValue]="option.key">
                 {{option.value}}
@@ -24,32 +27,31 @@
     </div>
     <ng-container *ngIf="data.fusoku">
         <div class="form-group">
-            <label for="tarinaimono">何がどのくらい不足しているか簡潔にご記入願います。</label>
+            <label for="tarinaimono">何がどのくらい不足しているか簡潔にご記入願います。<span class="optional">任意</span></label>
             <textarea class="form-control" id="tarinaimono" 
                 name="tarinaimono" [(ngModel)]="data.tarinaimono"
                 placeholder="例）N95マスクが大変不足しており、メーカーXの防護服も現在は十分にありますがこれから不足する見込みです。"></textarea>
         </div>
-        <div class="form-group">
-            <label for="ippannsoufu">一般の人からマスクや防護服などの寄付を受けることは可能ですか。</label>
-            <select class="form-control" id="ippannsoufu" name="ippannsoufu" [(ngModel)]="data.ippannsoufu">
-                <option *ngFor="let option of yesOrNo | keyvalue : cmp" [ngValue]="option.key">
-                    {{option.value}}
-                </option>
-            </select>
-        </div>
-        <ng-container *ngIf="data.ippannsoufu">
-            <div class="form-group">
-                <label for="soufuhouhou">送付先のご住所など、送付方法についてご記入ください。</label>
-                <textarea class="form-control" id="soufuhouhou" name="soufuhouhou" [(ngModel)]="data.soufuhouhou"
-                    placeholder="例）皇居病院　東京都千代田区千代田１　庶務課宛てに送付してください。事前連絡は不要です。感染防止のため直接のご来院は控えてください。">
-                </textarea>
-            </div>
-        </ng-container>
     </ng-container>
     <div class="form-group">
-        <label for="naiyo">その他一般の人に伝えたいこと、運営チームに伝えたいこと</label>
-        <textarea class="form-control" placeholder="ご意見、感想、ご要望など、なんでもご自由にお書きください"
-        [(ngModel)]="data.message" id="naiyo" name="naiyo"></textarea>
+        <label for="ippannsoufu">一般の人からマスクや防護服などの寄付を受けることは可能ですか。<span class="optional">任意</span></label>
+        <select class="form-control" id="ippannsoufu" name="ippannsoufu" [(ngModel)]="data.ippannsoufu">
+            <option *ngFor="let option of yesOrNo | keyvalue : cmp" [ngValue]="option.key">
+                {{option.value}}
+            </option>
+        </select>
+    </div>
+    <ng-container *ngIf="data.ippannsoufu">
+        <div class="form-group">
+            <label for="soufuhouhou">送付先のご住所など、送付方法についてご記入ください。<span class="optional">任意</span></label>
+            <textarea class="form-control" id="soufuhouhou" name="soufuhouhou" [(ngModel)]="data.soufuhouhou"
+                placeholder="例）皇居病院　東京都千代田区千代田１　庶務課宛てに送付してください。事前連絡は不要です。感染防止のため直接のご来院は控えてください。"></textarea>
+        </div>
+    </ng-container>
+    <div class="form-group">
+        <label for="naiyo">その他一般の人に伝えたいこと、運営チームに伝えたいこと<span class="optional">任意</span></label>
+        <textarea class="form-control" placeholder="ご意見、感想、ご要望など、なんでもご自由にお書きください" [(ngModel)]="data.message" id="naiyo"
+            name="naiyo"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    </form>
