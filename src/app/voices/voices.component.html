@@ -1,7 +1,7 @@
 <main role="main">
     <h3 class="top">IRの声</h3>
-    <div class="alert alert-primary">
-        <ng-container *ngIf="geo.apiAvailable">
+    <ng-container *ngIf="geo.apiAvailable">
+        <div class="alert alert-primary">
             <ng-container *ngIf="geo.place | async as place">
                 <ng-template [ngIf]="place.loading">
                     <div class="la-ball-clip-rotate la-dark"> 
@@ -20,8 +20,8 @@
                     </p>
                 </ng-template>
             </ng-container>
-        </ng-container>
-    </div>
+        </div>
+    </ng-container>
     <ng-container *ngIf="voices.voices | async as voices">
         <ng-container *ngIf="!voices.loading; else loading">
             <div *ngFor="let voice of voices.content" class="container container-voice">
