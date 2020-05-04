@@ -33,7 +33,7 @@ export class KankeishaComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: Router,
-    private forminfo: ForminfoService
+    public forminfo: ForminfoService
   ) { }
 
   ngOnInit(): void {

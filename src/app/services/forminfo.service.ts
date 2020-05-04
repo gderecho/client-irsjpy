@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { Location } from '@angular/common';
 import { environment } from '../../environments/environment';
 
@@ -11,14 +11,24 @@ import { environment } from '../../environments/environment';
 export class ForminfoService {
 
   email: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  readonly url: string = environment.backurl.indexOf('http') === -1 ?
-   this.loc.prepareExternalUrl(environment.backurl) : environment.backurl;
+  error: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  readonly url: string = (
+    environment.backurl.indexOf('http') === -1 ?
+    this.loc.prepareExternalUrl(environment.backurl) : 
+    environment.backurl
+  );
 
   constructor(
     private http: HttpClient,
     private route: Router,
     private loc: Location,
-  ) { }
+  ) { 
+    this.route.events.subscribe((e) => {
+      if(e instanceof NavigationStart) {
+        this.error.next(null);
+      }
+    })
+  }
 
   submit(data: object) {
     this.http.post<object>(
@@ -37,6 +47,7 @@ export class ForminfoService {
       },
       (error: HttpErrorResponse) => {
         console.error(error);
+        this.error.next(error.message);
       }
     );
   }
