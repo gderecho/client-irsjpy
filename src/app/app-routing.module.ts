@@ -24,7 +24,7 @@ const routes: Routes = [
     path: 'thanks',
     component: InquirythanksComponent
   },
-  { path: 'portal', loadChildren: () => import('./portal/portal.module').then(m => m.PortalModule) },
+  // { path: 'portal', loadChildren: () => import('./portal/portal.module').then(m => m.PortalModule) },
   { path: 'privacy', loadChildren: () => import('./privacy/privacy.module').then(m => m.PrivacyModule) },
   { path: 'terms', loadChildren: () => import('./terms/terms.module').then(m => m.TermsModule) }
 ];
