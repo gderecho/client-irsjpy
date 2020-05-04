@@ -13,6 +13,7 @@ import { LearnComponent } from './learn/learn.component';
 import { InquirythanksComponent } from './inquirythanks/inquirythanks.component';
 import { VoicesComponent } from './voices/voices.component';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { LoaderComponent } from './voices/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     KankeishaComponent,
     LearnComponent,
     InquirythanksComponent,
-    VoicesComponent
+    VoicesComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

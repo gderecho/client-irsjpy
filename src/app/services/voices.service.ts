@@ -19,7 +19,10 @@ export class VoicesService {
   ) { 
     this.http.get(this.backurl).subscribe(
       (res: any) => {
-        this.voices.next(res);
+        this.voices.next({
+          loading: false,
+          content: res
+        });
       },
       (err) => {
         console.error(err);
@@ -29,16 +32,21 @@ export class VoicesService {
       place => {
         console.log("Place updated, sorting voices");
         if('coords' in place && place['coords']) {
-          this.voices.next(
-            this.voices.value.sort((a,b) => {
+          this.voices.next({
+            loading: true,
+            content: this.get()
+          });
+          this.voices.next({
+            loading: false,
+            content: (this.get().sort((a: object,b: object) => {
               return (
                 LocationService.distance(a['coords'],place['coords']) 
                 - 
                 LocationService.distance(b['coords'], place['coords'])
               );
-            })
-          );
-        }
+            })),
+          });
+        } 
       }
     );
   }
@@ -47,9 +55,12 @@ export class VoicesService {
     this.loc.prepareExternalUrl(environment.backurl) :
     environment.backurl;
 
-  public voices : BehaviorSubject<Array<object>> = new BehaviorSubject<Array<object>>([]);
+  public voices : BehaviorSubject<any> = new BehaviorSubject<any>({
+    loading: true,
+    content: []
+  });
 
   get() {
-    return this.voices.value;
+    return this.voices.value.content;
   }
 }

@@ -22,28 +22,36 @@
             </ng-container>
         </ng-container>
     </div>
-    <div *ngFor="let voice of voices.voices | async" class="container container-voice">
-        <h4>{{voice.name}}</h4>
-        <h4>{{voice.address}}</h4>
-        <div *ngFor="let item of voice.content">
-            <p class="attr"> {{item[0]}} </p>
-            <p class="value" *ngIf="isstring(item[1]); else list"> {{item[1]}} </p>
-            <ng-template #list>
-                <div class="badge-holder">
-                    <span *ngFor="let i of item[1]" class="badge badge-primary">
-                        {{i}}
-                    </span>
+    <ng-container *ngIf="voices.voices | async as voices">
+        <ng-container *ngIf="!voices.loading; else loading">
+            <div *ngFor="let voice of voices.content" class="container container-voice">
+                <h4>{{voice.name}}</h4>
+                <h4>{{voice.address}}</h4>
+                <div *ngFor="let item of voice.content">
+                    <p class="attr"> {{item[0]}} </p>
+                    <p class="value" *ngIf="isstring(item[1]); else list"> {{item[1]}} </p>
+                    <ng-template #list>
+                        <div class="badge-holder">
+                            <span *ngFor="let i of item[1]" class="badge badge-primary">
+                                {{i}}
+                            </span>
+                        </div>
+                    </ng-template>
                 </div>
-            </ng-template>
-        </div>
-        <div>
-          <p class="attr"> 投稿者 </p>
-          <p class="value"> {{voice.poster}} </p>
-        </div>
-        <div>
-          <p class="attr"> 更新日 </p>
-          <p class="value"> {{voice.date}} </p>
-        </div>
-    </div>
+                <div>
+                    <p class="attr"> 投稿者 </p>
+                    <p class="value"> {{voice.poster}} </p>
+                </div>
+                <div>
+                    <p class="attr"> 更新日 </p>
+                    <p class="value"> {{voice.date}} </p>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #loading>
+            <app-loader></app-loader>
+        </ng-template>
+            <app-loader></app-loader>
+    </ng-container>
 
 </main>
