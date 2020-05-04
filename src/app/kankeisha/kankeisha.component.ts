@@ -10,15 +10,7 @@ import { ForminfoService } from '../services/forminfo.service';
 })
 export class KankeishaComponent implements OnInit {
 
-  data = {
-    email: "",
-    name: "",
-    message: "",
-    soufuhouhou: "",
-    tarinaimono: "",
-    fusoku: null,
-    ippannsoufu: null,
-  };
+  data = this.forminfo.data;
 
   readonly yesOrNo=new Map<boolean, string>([
     [null, "未選択"],

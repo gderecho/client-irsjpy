@@ -12,6 +12,30 @@ export class ForminfoService {
 
   email: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   error: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+
+  data: any = {
+    email: "",
+    name: "",
+    message: "",
+    soufuhouhou: "",
+    tarinaimono: "",
+    fusoku: null,
+    ippannsoufu: null,
+  };
+
+  reset() {
+    this.data = {
+      email: "",
+      name: "",
+      message: "",
+      soufuhouhou: "",
+      tarinaimono: "",
+      fusoku: null,
+      ippannsoufu: null,
+    }
+  }
+
+
   readonly url: string = (
     environment.backurl.indexOf('http') === -1 ?
     this.loc.prepareExternalUrl(environment.backurl) : 
@@ -43,6 +67,7 @@ export class ForminfoService {
       (a : object) => {
         console.info(a);
         this.email.next(a['msg']['email']);
+        this.reset();
         this.route.navigate(['/thanks']);
       },
       (error: HttpErrorResponse) => {
