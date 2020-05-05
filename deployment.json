@@ -1,0 +1,42 @@
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+        "name": "irsjpy-client",
+        "namespace": "<NAMESPACE>"
+    },
+    "spec": {
+        "replicas": 1,
+        "selector": {
+            "matchLabels": {
+                "app": "irsjpy-client"
+            }
+        },
+        "template": {
+            "metadata": {
+                "labels": {
+                    "app": "irsjpy-client"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "irsjpy-client",
+                        "image": "<IMAGE>",
+                        "imagePullPolicy": "Always",
+                        "ports": [
+                            {
+                                "containerPort": 80
+                            }
+                        ]
+                    }
+                ],
+                "imagePullSecrets": [
+                    {
+                        "name": "github"
+                    }
+                ]
+            }
+        }
+    }
+}
