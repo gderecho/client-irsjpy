@@ -23,7 +23,7 @@
         </div>
     </ng-container>
     <ng-container *ngIf="voices.voices | async as voices">
-        <ng-container *ngIf="!voices.loading; else loading">
+        <ng-container *ngIf="!voices.loading && !voices.error; else loading">
             <div *ngFor="let voice of voices.content" class="container container-voice">
                 <h4>{{voice.name}}</h4>
                 <h4>{{voice.address}}</h4>
@@ -49,7 +49,12 @@
             </div>
         </ng-container>
         <ng-template #loading>
-            <app-loader></app-loader>
+            <app-loader *ngIf="!voices.error; else error"></app-loader>
+        </ng-template>
+        <ng-template #error>
+            <div class="alert alert-danger">
+                申し訳ありません。エラーが発生いたしました。
+            </div>
         </ng-template>
     </ng-container>
 </main>

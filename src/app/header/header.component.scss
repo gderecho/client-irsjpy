@@ -1,11 +1,33 @@
 
-@media(min-width:42em) {
+@media(min-width:27rem) {
     .title-header {
         float: left;
     }
     .nav-header {
         float: right;
     }
+}
+@media(max-width: 26.99rem) {
+    .nav > * {
+        flex-grow: 1;
+    }
+    .nav {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.title-header {
+    padding-top: .5rem;
+}
+
+//.nav {
+//    justify-content: space-evenly;
+//}
+
+span {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 :host {

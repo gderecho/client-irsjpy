@@ -25,6 +25,11 @@ export class VoicesService {
         });
       },
       (err) => {
+        this.voices.next({
+          loading: false,
+          error: true,
+          content: []
+        })
         console.error(err);
       }
     );
@@ -57,6 +62,7 @@ export class VoicesService {
 
   public voices : BehaviorSubject<any> = new BehaviorSubject<any>({
     loading: true,
+    error: false,
     content: []
   });
 

@@ -3,6 +3,12 @@ p.copyright {
     margin-bottom: .2rem;
 }
 
+@media(max-width: 550px) {
+    p.copyright {
+        display: none;
+    }
+}
+
 p.attr {
     color: rgb(180, 180, 180);
 }
@@ -21,6 +27,7 @@ footer.a {
     display: flex;
     justify-content: space-between;
     margin-bottom: -1rem;
+    flex-wrap: wrap;
 }
 
 .google {

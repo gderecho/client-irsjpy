@@ -12,7 +12,7 @@ import { KankeishaComponent } from './kankeisha/kankeisha.component';
 import { LearnComponent } from './learn/learn.component';
 import { InquirythanksComponent } from './inquirythanks/inquirythanks.component';
 import { VoicesComponent } from './voices/voices.component';
-import { AuthInterceptor } from './services/auth.interceptor';
+// import { AuthInterceptor } from './services/auth.interceptor';
 import { LoaderComponent } from './voices/loader/loader.component';
 
 @NgModule({
@@ -33,11 +33,11 @@ import { LoaderComponent } from './voices/loader/loader.component';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [{
+  /*providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  }],*/
   bootstrap: [AppComponent]
 })
 export class AppModule { }
